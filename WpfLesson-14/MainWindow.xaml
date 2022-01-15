@@ -7,27 +7,30 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
+        <local:ProductConvertor x:Key="cnvrt"/>
         <DataTemplate x:Key="myTamplate">
             <Border x:Name="brdr" BorderBrush="Gray" BorderThickness="2" Padding="3" Margin="3">
                 <Grid ShowGridLines="False" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
+                        <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions >
-                        <RowDefinition />
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Тип: "/>
-                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Path=ProductType}"/>
-                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Название: "/>
-                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Path=Title}"/>
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Цена: "/>
-                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Path=Price}"/>
-                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Изображение: "/>
-                    <Image Grid.Row="3" Grid.Column="1" Source="{Binding Path=Image}" Width="40" Height="40" />
+                    <Image  Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Width="50" Height="50" Margin="5" Source="{Binding Path=ProductType,Converter={StaticResource cnvrt}}"/>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="Тип: "/>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Path=ProductType}" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Text="Название: "/>
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Path=Title}" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="Цена: "/>
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding Path=Price}" HorizontalAlignment="Center"/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Text="Изображение: "/>
+                    <Image Grid.Row="3" Grid.Column="2" Source="{Binding Path=Image}" Width="40" Height="40" HorizontalAlignment="Center" />
 
                 </Grid>
             </Border>
